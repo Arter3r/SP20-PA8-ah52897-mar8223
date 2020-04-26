@@ -9,7 +9,10 @@
 #ifndef PLAGIARISMCATCHER_FOLDER_H
 #define PLAGIARISMCATCHER_FOLDER_H
 
+#include <iostream>
 #include <string>
+#include <dirent.h>
+#include <errno.h>
 #include <vector>
 #include "Document.h"
 
@@ -18,9 +21,14 @@ using namespace std;
 class Folder {
 private:
     string directory;
-    vector<Document> filenames;
+    vector<Document> files;
 public:
     Folder(string path);
+    Document& getDocument(string filename);
+    Document& operator[](int index);
+    Document& operator[](string filename);
+    int size();
+
 };
 
 

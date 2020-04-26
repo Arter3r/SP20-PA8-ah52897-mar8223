@@ -13,5 +13,10 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
+    Folder myFolder("./sm_doc_set");
+    cout << myFolder.size() << endl;
+    for (int i = 0; i < myFolder.size(); i++) {
+        cout << myFolder[i].getName() << endl;
+    }
     return 0;
 }

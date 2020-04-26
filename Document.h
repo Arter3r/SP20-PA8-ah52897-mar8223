@@ -19,11 +19,14 @@ private:
     string filename;
     map<string, int> sequences;
 public:
+    const int SEQUENCE_LENGTH;
     Document();
     Document(string filename);
     Document& copy(Document& other);
     Document& operator=(Document& rhs);
-    ~Document();
+
+    string getName();
+    void fillSequences();
 };
 
 
