@@ -2,6 +2,7 @@
 // Created by Abdullah on 4/26/2020.
 //
 
+#include <csignal>
 #include "Folder.h"
 
 Folder::Folder(string path) {
@@ -15,7 +16,7 @@ Folder::Folder(string path) {
 
     while ((file = readdir(dp)) != NULL) {
         if(string(file->d_name) != ".." && string(file->d_name) != ".")
-            files.push_back(string(file->d_name));
+            files.push_back(path + "/" + string(file->d_name));
     }
     closedir(dp);
 }
