@@ -19,6 +19,8 @@ Folder::Folder(string path) {
             files.push_back(path + "/" + string(file->d_name));
     }
     closedir(dp);
+    similiarities.resize(files.size(), vector<int>(files.size()));
+    fillSimiliarities();
 }
 
 int Folder::size() {
@@ -27,4 +29,23 @@ int Folder::size() {
 
 Document& Folder::operator[](int index) {
     return files[index];
+}
+
+void Folder::fillSimiliarities() {
+    for(int i = 0; i < files.size()-1; i++){
+        for(int j = i+1; j < files.size(); j++){
+            int similiarSequences = 0;
+            for(auto& wordCount:files[i].getSequences()){
+                auto& other = files[j].getSequences();
+                auto otherWordCount = other.find(wordCount.first);
+                if(otherWordCount != other.end())
+                    similiarSequences += min(wordCount.second, otherWordCount->second);
+            }
+            similiarities[i][j] = similiarSequences;
+        }
+    }
+}
+
+vector<vector<int>>& Folder::getSimiliarities() {
+    return similiarities;
 }

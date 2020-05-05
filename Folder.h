@@ -15,6 +15,7 @@
 #include <errno.h>
 #include <vector>
 #include "Document.h"
+#include <map>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ class Folder {
 private:
     string directory;
     vector<Document> files;
+    vector<vector<int>> similiarities;
 public:
     Folder(string path);
     Document& getDocument(string filename);
@@ -29,6 +31,8 @@ public:
     Document& operator[](string filename);
     int size();
 
+    void fillSimiliarities();
+    vector<vector<int>>& getSimiliarities();
 };
 
 
