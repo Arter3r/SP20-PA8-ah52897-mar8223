@@ -5,7 +5,7 @@
 #include <csignal>
 #include "Folder.h"
 
-Folder::Folder(string path) {
+Folder::Folder(string path, int seq_length) {
     directory = path;
     DIR *dp;
     struct dirent *file;
@@ -16,7 +16,7 @@ Folder::Folder(string path) {
 
     while ((file = readdir(dp)) != NULL) {
         if(string(file->d_name) != ".." && string(file->d_name) != ".")
-            files.push_back(path + "/" + string(file->d_name));
+            files.push_back(Document((path + "/" + string(file->d_name)), seq_length));
     }
     closedir(dp);
     similiarities.resize(files.size(), vector<int>(files.size()));

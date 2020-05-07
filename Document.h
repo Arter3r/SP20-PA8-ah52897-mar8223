@@ -19,9 +19,9 @@ private:
     string filename;
     map<string, int> sequences;
 public:
-    const int SEQUENCE_LENGTH = 6;
+    const int SEQUENCE_LENGTH;
     Document();
-    Document(string filename);
+    Document(string filename, int seq_length);
     Document& copy(Document& other);
     Document& operator=(Document& rhs);
     map<string, int>& getSequences();

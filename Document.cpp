@@ -16,7 +16,7 @@ typedef Node* Tail;
 void cleanString(string& s);
 void stringify(Head head, string &result);
 
-Document::Document(string filename) {
+Document::Document(string filename, int seq_length) : SEQUENCE_LENGTH(seq_length) {
     this->filename = filename;
     //populate sequences.
     ifstream inFile;

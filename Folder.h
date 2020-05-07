@@ -25,7 +25,7 @@ private:
     vector<Document> files;
     vector<vector<int>> similiarities;
 public:
-    Folder(string path);
+    Folder(string path, int seq_length);
     Document& getDocument(string filename);
     Document& operator[](int index);
     Document& operator[](string filename);
